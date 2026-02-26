@@ -14,11 +14,5 @@ ENV JAR_FILE=${JAR_FILE}
 
 WORKDIR /app
 COPY --from=build /app/target/${JAR_FILE} app.jar
-
-# default database settings (can be overridden at runtime with environment variables)
-ENV JDBC_URL=jdbc:mysql://localhost:3306/TTproject
-ENV JDBC_USER=root
-ENV JDBC_PASS=Root@1234
-
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/app/app.jar"]
